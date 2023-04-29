@@ -1,0 +1,49 @@
+.ticket-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ticket-card {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ticket-card h2 {
+    margin-bottom: 5px;
+}
+
+.ticket-card p {
+    margin: 5px 0;
+}
+
+.ticket-card .actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.ticket-card .actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ticket-card .actions .edit {
+    background-color: #4285f4;
+    color: #fff;
+}
+
+.ticket-card .actions .delete {
+    background-color: #dc3545;
+    color: #fff;
+}

@@ -1,0 +1,22 @@
+<h1>Liste des tickets</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Statut</th>
+        <th>Créateur</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let ticket of tickets">
+        <td>{{ticket.id}}</td>
+        <td>{{ticket.title}}</td>
+        <td>{{ticket.description}}</td>
+        <td>{{ticket.status}}</td>
+        <td>{{ticket.creator}}</td>
+    </tr>
+    </tbody>
+</table>

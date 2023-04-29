@@ -9,21 +9,19 @@
 
 <h1>Liste des tickets</h1>
 
-<ul>
-  <li *ngFor="let ticket of tickets">{{ticket.title}}</li>
-</ul>
+<div *ngIf="loading">
+  <p>Chargement...</p>
+</div>
 
-<form (submit)="ajouterTicket()">
-  <label>
-    Titre :
-    <input type="text" [(ngModel)]="nouveauTicket.title">
-  </label>
-  <label>
-    Description :
-    <textarea [(ngModel)]="nouveauTicket.description"></textarea>
-  </label>
-  <button type="submit">Ajouter un ticket</button>
-</form>
+<div *ngIf="tickets && !loading">
+  <div *ngFor="let ticket of tickets">
+    <h2>{{ ticket.title }}</h2>
+    <p>{{ ticket.description }}</p>
+    <p>Status: {{ ticket.status }}</p>
+    <p>Assigné à: {{ ticket.assignee }}</p>
+  </div>
+</div>
+
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

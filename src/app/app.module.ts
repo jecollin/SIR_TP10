@@ -1,28 +1,29 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import {FormsModule} from "@angular/forms";
-import { TicketComponent } from './ticket/ticket.component';
-import { UserComponent } from './user/user.component';
-import { TicketCommentComponent } from './ticket-comment/ticket-comment.component';
-import { BugTicketComponent } from './bug-ticket/bug-ticket.component';
-import { FeatureRequestTicketComponent } from './feature-request-ticket/feature-request-ticket.component';
+import { TicketListComponent } from './ticket-list/ticket-list.component';
+import { TicketService } from './services/ticket.service';
+import { UserService } from './services/user.service';
+import { TicketCommentService } from './services/ticket-comment.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TicketComponent,
-    UserComponent,
-    TicketCommentComponent,
-    BugTicketComponent,
-    FeatureRequestTicketComponent
+    TicketListComponent
   ],
-    imports: [
-        BrowserModule,
-        FormsModule
-    ],
-  providers: [],
-  bootstrap: []
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule
+  ],
+  providers: [
+    TicketService,
+    UserService,
+    TicketCommentService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
