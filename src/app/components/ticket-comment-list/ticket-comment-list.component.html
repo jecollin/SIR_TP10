@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Comments</h3>
+        </div>
+        <div class="card-body">
+            <div *ngFor="let comment of comments">
+                <h5>{{comment.author.name}} said:</h5>
+                <p>{{comment.content}}</p>
+            </div>
+        </div>
+    </div>
+</div>

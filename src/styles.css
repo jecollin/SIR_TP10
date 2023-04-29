@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+/* Change default font */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Add a global border box */
+* {
+    box-sizing: border-box;
+}
+
+/* Set default margin and padding to 0 */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Customize the primary color of the app */
+:root {
+    --primary-color: #007bff;
+}
+
+/* Add custom styles to the Angular Material components */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
