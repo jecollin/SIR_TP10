@@ -18,6 +18,3 @@ html, body {
 :root {
     --primary-color: #007bff;
 }
-
-/* Add custom styles to the Angular Material components */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';

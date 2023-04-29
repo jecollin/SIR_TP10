@@ -9,11 +9,11 @@
 
 <h1>Liste des tickets</h1>
 
-<div *ngIf="loading">
+<div *ngIf="isLoading">
   <p>Chargement...</p>
 </div>
 
-<div *ngIf="tickets && !loading">
+<div *ngIf="tickets && !isLoading">
   <div *ngFor="let ticket of tickets">
     <h2>{{ ticket.title }}</h2>
     <p>{{ ticket.description }}</p>
@@ -21,6 +21,8 @@
     <p>Assigné à: {{ ticket.assignee }}</p>
   </div>
 </div>
+
+<app-ticket-comment-form (commentAdded)="onCommentAdded($event)"></app-ticket-comment-form>
 
 
 
