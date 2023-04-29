@@ -1,22 +1,36 @@
-<h1>Liste des tickets</h1>
+<h2>List of Tickets</h2>
+<div>
+    <label>Title:</label> <input #title /><br />
+    <label>Description:</label> <input #description /><br />
+    <button (click)="add(title.value, description.value); title.value=''; description.value='';">Add</button>
+</div>
+<br />
 
 <table>
     <thead>
     <tr>
         <th>ID</th>
-        <th>Titre</th>
+        <th>Title</th>
         <th>Description</th>
-        <th>Statut</th>
-        <th>Créateur</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Created By</th>
+        <th>Created Date</th>
+        <th>Updated By</th>
+        <th>Updated Date</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let ticket of tickets">
+    <tr *ngFor="let ticket of tickets" (click)="onSelect(ticket)">
         <td>{{ticket.id}}</td>
         <td>{{ticket.title}}</td>
         <td>{{ticket.description}}</td>
         <td>{{ticket.status}}</td>
+        <td>{{ticket.priority}}</td>
         <td>{{ticket.createdBy}}</td>
+        <td>{{ticket.createdDate | date:'medium'}}</td>
+        <td>{{ticket.updatedBy}}</td>
+        <td>{{ticket.updatedDate | date:'medium'}}</td>
     </tr>
     </tbody>
 </table>

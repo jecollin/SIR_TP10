@@ -1,30 +1,17 @@
-<div class="form-wrapper">
-    <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" formControlName="title" id="title" class="form-control">
-            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-                <div *ngIf="title.errors.required">Title is required.</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea formControlName="description" id="description" class="form-control"></textarea>
-            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
-                <div *ngIf="description.errors.required">Description is required.</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="assignee">Assignee:</label>
-            <select formControlName="assignee" id="assignee" class="form-control">
-                <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
-            </select>
-            <div *ngIf="assignee.invalid && (assignee.dirty || assignee.touched)" class="alert alert-danger">
-                <div *ngIf="assignee.errors.required">Assignee is required.</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <button type="submit" [disabled]="ticketForm.invalid" class="btn btn-primary">Save</button>
-        </div>
-    </form>
-</div>
+<h2>Création d'un nouveau ticket</h2>
+
+<form [formGroup]="ticketForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+        <label for="title">Titre :</label>
+        <input type="text" id="title" class="form-control" formControlName="title" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description :</label>
+        <textarea id="description" class="form-control" formControlName="description" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="author">Auteur :</label>
+        <input type="text" id="author" class="form-control" formControlName="author" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Créer le ticket</button>
+</form>

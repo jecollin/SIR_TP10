@@ -1,9 +1,11 @@
-<div class="container">
-    <form (ngSubmit)="onSubmit()" #commentForm="ngForm">
-        <div class="form-group">
-            <label for="comment">Add a comment:</label>
-            <textarea id="comment" name="comment" class="form-control" required [(ngModel)]="newComment.comment"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" id="author" class="form-control" formControlName="author">
+    </div>
+    <div class="form-group">
+        <label for="body">Comment</label>
+        <textarea id="body" class="form-control" formControlName="body"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Comment</button>
+</form>

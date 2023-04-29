@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Ticket } from '../ticket';
-import { TicketService } from '../ticket.service';
+import { Ticket } from '../models/ticket';
+import { TicketService } from '../services/ticket.service';
 
 @Component({
     selector: 'app-ticket-detail',
@@ -11,7 +11,7 @@ import { TicketService } from '../ticket.service';
 })
 export class TicketDetailComponent implements OnInit {
 
-    ticket: Ticket;
+    ticket: Ticket = new Ticket(0, '', '', '', '', new Date(), new Date(), '', '');
 
     constructor(
         private route: ActivatedRoute,
@@ -23,9 +23,11 @@ export class TicketDetailComponent implements OnInit {
     }
 
     getTicket(): void {
-        const id = +this.route.snapshot.paramMap.get('id');
-        this.ticketService.getTicket(id)
-            .subscribe(ticket => this.ticket = ticket);
+        const id = this.route.snapshot.paramMap.get('id');
+        if (id !== null) {
+            this.ticketService.getTicketById(+id)
+                .subscribe(ticket => this.ticket = ticket);
+        }
     }
 
 }

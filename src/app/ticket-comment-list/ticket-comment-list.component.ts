@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TicketComment } from '../models/ticket-comment.model';
+import { TicketComment } from '../models/ticket-comment';
 
 @Component({
     selector: 'app-ticket-comment-list',
@@ -7,7 +7,7 @@ import { TicketComment } from '../models/ticket-comment.model';
     styleUrls: ['./ticket-comment-list.component.css']
 })
 export class TicketCommentListComponent implements OnInit {
-    @Input() comments: TicketComment[];
+    @Input() comments!: TicketComment[];
 
     constructor() { }
 

@@ -2,24 +2,50 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Créer un nouvel utilisateur</h2>
-            <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
                 <div class="form-group">
                     <label for="firstName">Prénom</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" required>
+                    <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+                    <div *ngIf="userForm.get('firstName')?.invalid && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)">
+                        <div *ngIf="userForm.get('firstName')?.errors?.required">
+                            Le prénom est requis.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="lastName">Nom de famille</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" required>
+                    <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+                    <div *ngIf="userForm.get('lastName')?.invalid && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)">
+                        <div *ngIf="userForm.get('lastName')?.errors?.required">
+                            Le nom de famille est requis.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Adresse email</label>
-                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required>
+                    <input type="email" class="form-control" id="email" formControlName="email" required>
+                    <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
+                        <div *ngIf="userForm.get('email')?.errors?.required">
+                            L'adresse email est requise.
+                        </div>
+                        <div *ngIf="userForm.get('email')?.errors?.email">
+                            L'adresse email est invalide.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required>
+                    <input type="password" class="form-control" id="password" formControlName="password" required>
+                    <div *ngIf="userForm.get('password')?.invalid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)">
+                        <div *ngIf="userForm.get('password')?.errors?.required">
+                            Le mot de passe est requis.
+                        </div>
+                        <div *ngIf="userForm.get('password')?.errors?.minlength">
+                            Le mot de passe doit avoir au moins 6 caractères.
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid">Créer</button>
+                <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Créer</button>
             </form>
         </div>
     </div>

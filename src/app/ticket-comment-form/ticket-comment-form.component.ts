@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TicketComment } from '../models/ticket-comment.model';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { TicketComment } from '../models/ticket-comment';
 
 @Component({
     selector: 'app-ticket-comment-form',
@@ -8,7 +8,7 @@ import { TicketComment } from '../models/ticket-comment.model';
     styleUrls: ['./ticket-comment-form.component.css']
 })
 export class TicketCommentFormComponent {
-    commentForm: FormGroup;
+    commentForm: FormGroup = new FormGroup({name: new FormControl('')});
 
     @Output() commentAdded = new EventEmitter<TicketComment>();
 
@@ -24,11 +24,15 @@ export class TicketCommentFormComponent {
     }
 
     onSubmit() {
-        const comment: TicketComment = {
-            author: this.commentForm.value.author,
-            body: this.commentForm.value.body
-        };
+        const comment: TicketComment = new TicketComment(
+            0, // l'ID sera généré automatiquement par le serveur
+            this.commentForm.value.body,
+            this.commentForm.value.author,
+            0, // l'ID du ticket sera défini ultérieurement
+            new Date()
+        );
         this.commentAdded.emit(comment);
         this.commentForm.reset();
     }
+
 }
