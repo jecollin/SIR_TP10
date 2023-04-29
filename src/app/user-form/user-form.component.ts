@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 
@@ -9,11 +9,15 @@ import { UserService } from '../services/user.service';
     styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
-    userForm: FormGroup;
+    userForm: FormGroup = new FormGroup({
+        name: new FormControl('')
+    });
 
-    constructor(private formBuilder: FormBuilder,
-                private router: Router,
-                private userService: UserService) { }
+    constructor(
+        private formBuilder: FormBuilder,
+        private router: Router,
+        private userService: UserService
+    ) {}
 
     ngOnInit() {
         this.initForm();
@@ -30,7 +34,7 @@ export class UserFormComponent implements OnInit {
 
     onSubmitForm() {
         const formValue = this.userForm.value;
-        this.userService.addUser(formValue).subscribe(
+        this.userService.createUser(formValue).subscribe(
             () => {
                 console.log('User added successfully');
                 this.router.navigate(['/users']);

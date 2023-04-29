@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from './components/app.component';
-import { TicketListComponent } from './components/ticket-list/ticket-list.component';
-import { TicketDetailComponent } from './components/ticket-detail/ticket-detail.component';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { UserFormComponent } from './components/user-form/user-form.component';
-import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
-import { TicketCommentListComponent } from './components/ticket-comment-list/ticket-comment-list.component';
-import { TicketCommentFormComponent } from './components/ticket-comment-form/ticket-comment-form.component';
+import { AppComponent } from './app.component';
+import { TicketListComponent } from './ticket-list/ticket-list.component';
+import { TicketDetailComponent } from './ticket-detail/ticket-detail.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { TicketFormComponent } from './ticket-form/ticket-form.component';
+import { TicketCommentListComponent } from './ticket-comment-list/ticket-comment-list.component';
+import { TicketCommentFormComponent } from './ticket-comment-form/ticket-comment-form.component';
 
 @NgModule({
   declarations: [

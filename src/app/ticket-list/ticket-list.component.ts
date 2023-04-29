@@ -10,7 +10,7 @@ import { TicketService } from '../services/ticket.service';
     styleUrls: ['./ticket-list.component.css']
 })
 export class TicketListComponent implements OnInit {
-    tickets: Ticket[];
+    tickets: Ticket[] = [];
 
     constructor(
         private ticketService: TicketService,

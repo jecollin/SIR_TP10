@@ -24,11 +24,23 @@ export class UserService {
         return this.http.put(`${this.baseUrl}/${id}`, value);
     }
 
-    deleteUser(id: number): Observable<any> {
+    deleteUserById(id: number): Observable<any> {
         return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
     }
 
+
+    deleteUser(user: User): void {
+        this.deleteUserById(user.id)
+            .subscribe( data => {
+                console.log(data);
+            });
+    };
+
     getUser(id: number): Observable<User> {
         return this.http.get<User>(`${this.baseUrl}/${id}`);
+    }
+
+    getUsers(): Observable<User[]> {
+        return this.http.get<User[]>(`${this.baseUrl}`);
     }
 }
