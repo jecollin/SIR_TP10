@@ -1,0 +1,31 @@
+<h2>Liste des utilisateurs</h2>
+<div *ngIf="users.length === 0">
+  <p>Aucun utilisateur enregistré.</p>
+</div>
+<div *ngIf="users.length > 0">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom d'utilisateur</th>
+        <th>Adresse email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="updateUser(user)">
+            Modifier
+          </button>
+          <button class="btn btn-danger" (click)="deleteUser(user)">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
